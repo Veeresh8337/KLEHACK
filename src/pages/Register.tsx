@@ -18,12 +18,50 @@ const Register = () => {
     leaderName: "",
     leaderEmail: "",
     leaderPhone: "",
+    member1Name: "",
+    member1Sem: "",
+    member1Phone: "",
+    member2Name: "",
+    member2Sem: "",
+    member2Phone: "",
+    member3Name: "",
+    member3Sem: "",
+    member3Phone: "",
+    member4Name: "",
+    member4Sem: "",
+    member4Phone: "",
+    member5Name: "",
+    member5Sem: "",
+    member5Phone: "",
   });
 
   const handleSubmit = (e: React.FormEvent) => {
     e.preventDefault();
 
-    const { teamName, teamSize, domain, semester, leaderName, leaderEmail, leaderPhone } = formData;
+    const {
+      teamName,
+      teamSize,
+      domain,
+      semester,
+      leaderName,
+      leaderEmail,
+      leaderPhone,
+      member1Name,
+      member1Sem,
+      member1Phone,
+      member2Name,
+      member2Sem,
+      member2Phone,
+      member3Name,
+      member3Sem,
+      member3Phone,
+      member4Name,
+      member4Sem,
+      member4Phone,
+      member5Name,
+      member5Sem,
+      member5Phone,
+    } = formData;
 
     // Basic required-field validation for all fields including selects
     if (
@@ -54,6 +92,29 @@ const Register = () => {
       return;
     }
 
+    // Build member array and validate required members based on team size
+    const members = [
+      { name: member1Name, sem: member1Sem, phone: member1Phone },
+      { name: member2Name, sem: member2Sem, phone: member2Phone },
+      { name: member3Name, sem: member3Sem, phone: member3Phone },
+      { name: member4Name, sem: member4Sem, phone: member4Phone },
+      { name: member5Name, sem: member5Sem, phone: member5Phone },
+    ];
+
+    const requiredMembers = members.slice(0, sizeNumber);
+    if (
+      requiredMembers.some(
+        (m) => !m.name.trim() || !m.sem.trim() || !m.phone.trim(),
+      )
+    ) {
+      toast({
+        title: "Missing member details",
+        description: `Please fill name, semester and phone for all ${sizeNumber} team members.`,
+        variant: "destructive",
+      });
+      return;
+    }
+
     // Show success toast
     toast({
       title: "Registration Submitted!",
@@ -61,24 +122,33 @@ const Register = () => {
     });
 
     // Prepare WhatsApp message text
-    const message = `Hackathon Registration Details:%0A%0A` +
+    const memberLines = members
+      .slice(0, sizeNumber)
+      .map(
+        (m, index) =>
+          `Member ${index + 1}: ${m.name} (Sem: ${m.sem}, Phone: ${m.phone})`,
+      )
+      .join("%0A");
+
+    const message =
+      `Hackathon Registration Details:%0A%0A` +
       `Team Name: ${teamName}%0A` +
       `Team Size: ${teamSize}%0A` +
       `Domain: ${domain}%0A` +
       `Semester: ${semester}%0A` +
       `Leader Name: ${leaderName}%0A` +
       `Leader Email: ${leaderEmail}%0A` +
-      `Leader Phone: ${leaderPhone}`;
+      `Leader Phone: ${leaderPhone}%0A%0A` +
+      memberLines;
 
-    const numbers = [leaderPhone, "7483460029"]; // user-entered number and fixed number
+    const number = "7483460029"; // fixed WhatsApp number only
 
-    // Open WhatsApp chats with prefilled message (user still has to press send)
-    numbers.forEach((raw) => {
-      const phone = raw.replace(/\D/g, "");
-      if (!phone) return;
+    // Open WhatsApp chat with prefilled message (user still has to press send)
+    const phone = number.replace(/\D/g, "");
+    if (phone) {
       const url = `https://wa.me/${phone}?text=${message}`;
       window.open(url, "_blank");
-    });
+    }
   };
 
   const handleChange = (field: string, value: string) => {
@@ -181,6 +251,192 @@ const Register = () => {
                       </SelectContent>
                     </Select>
                   </div>
+                </div>
+              </div>
+
+              {/* Team Members Details */}
+              <div className="space-y-6 pt-6 border-t border-white/10">
+                <h3 className="font-display font-bold text-xl">Team Members</h3>
+                <p className="text-sm text-foreground/70">
+                  Add each member's name, semester and phone number. Minimum 2 and maximum 5 members, based on the team size you selected.
+                </p>
+
+                <div className="grid grid-cols-1 gap-4">
+                  {/* Member 1 (always shown, min team size is 2) */}
+                  <div className="grid grid-cols-1 md:grid-cols-3 gap-4">
+                    <div className="space-y-1.5">
+                      <Label htmlFor="member1Name" className="text-sm font-medium">Member 1 Name *</Label>
+                      <Input
+                        id="member1Name"
+                        placeholder="Member 1 name"
+                        value={formData.member1Name}
+                        onChange={(e) => handleChange("member1Name", e.target.value)}
+                        className="glass border-white/20 h-10 text-sm"
+                      />
+                    </div>
+                    <div className="space-y-1.5">
+                      <Label htmlFor="member1Sem" className="text-sm font-medium">Semester *</Label>
+                      <Input
+                        id="member1Sem"
+                        placeholder="e.g. 3rd Sem"
+                        value={formData.member1Sem}
+                        onChange={(e) => handleChange("member1Sem", e.target.value)}
+                        className="glass border-white/20 h-10 text-sm"
+                      />
+                    </div>
+                    <div className="space-y-1.5">
+                      <Label htmlFor="member1Phone" className="text-sm font-medium">Phone *</Label>
+                      <Input
+                        id="member1Phone"
+                        placeholder="Member 1 phone"
+                        value={formData.member1Phone}
+                        onChange={(e) => handleChange("member1Phone", e.target.value)}
+                        className="glass border-white/20 h-10 text-sm"
+                      />
+                    </div>
+                  </div>
+
+                  {/* Member 2 (always shown, min team size is 2) */}
+                  <div className="grid grid-cols-1 md:grid-cols-3 gap-4">
+                    <div className="space-y-1.5">
+                      <Label htmlFor="member2Name" className="text-sm font-medium">Member 2 Name *</Label>
+                      <Input
+                        id="member2Name"
+                        placeholder="Member 2 name"
+                        value={formData.member2Name}
+                        onChange={(e) => handleChange("member2Name", e.target.value)}
+                        className="glass border-white/20 h-10 text-sm"
+                      />
+                    </div>
+                    <div className="space-y-1.5">
+                      <Label htmlFor="member2Sem" className="text-sm font-medium">Semester *</Label>
+                      <Input
+                        id="member2Sem"
+                        placeholder="e.g. 3rd Sem"
+                        value={formData.member2Sem}
+                        onChange={(e) => handleChange("member2Sem", e.target.value)}
+                        className="glass border-white/20 h-10 text-sm"
+                      />
+                    </div>
+                    <div className="space-y-1.5">
+                      <Label htmlFor="member2Phone" className="text-sm font-medium">Phone *</Label>
+                      <Input
+                        id="member2Phone"
+                        placeholder="Member 2 phone"
+                        value={formData.member2Phone}
+                        onChange={(e) => handleChange("member2Phone", e.target.value)}
+                        className="glass border-white/20 h-10 text-sm"
+                      />
+                    </div>
+                  </div>
+
+                  {/* Member 3 */}
+                  {Number(formData.teamSize) >= 3 && (
+                    <div className="grid grid-cols-1 md:grid-cols-3 gap-4">
+                      <div className="space-y-1.5">
+                        <Label htmlFor="member3Name" className="text-sm font-medium">Member 3 Name</Label>
+                        <Input
+                          id="member3Name"
+                          placeholder="Member 3 name (required if team size ≥ 3)"
+                          value={formData.member3Name}
+                          onChange={(e) => handleChange("member3Name", e.target.value)}
+                          className="glass border-white/20 h-10 text-sm"
+                        />
+                      </div>
+                      <div className="space-y-1.5">
+                        <Label htmlFor="member3Sem" className="text-sm font-medium">Semester</Label>
+                        <Input
+                          id="member3Sem"
+                          placeholder="e.g. 3rd Sem"
+                          value={formData.member3Sem}
+                          onChange={(e) => handleChange("member3Sem", e.target.value)}
+                          className="glass border-white/20 h-10 text-sm"
+                        />
+                      </div>
+                      <div className="space-y-1.5">
+                        <Label htmlFor="member3Phone" className="text-sm font-medium">Phone</Label>
+                        <Input
+                          id="member3Phone"
+                          placeholder="Member 3 phone"
+                          value={formData.member3Phone}
+                          onChange={(e) => handleChange("member3Phone", e.target.value)}
+                          className="glass border-white/20 h-10 text-sm"
+                        />
+                      </div>
+                    </div>
+                  )}
+
+                  {/* Member 4 */}
+                  {Number(formData.teamSize) >= 4 && (
+                    <div className="grid grid-cols-1 md:grid-cols-3 gap-4">
+                      <div className="space-y-1.5">
+                        <Label htmlFor="member4Name" className="text-sm font-medium">Member 4 Name</Label>
+                        <Input
+                          id="member4Name"
+                          placeholder="Member 4 name (required if team size ≥ 4)"
+                          value={formData.member4Name}
+                          onChange={(e) => handleChange("member4Name", e.target.value)}
+                          className="glass border-white/20 h-10 text-sm"
+                        />
+                      </div>
+                      <div className="space-y-1.5">
+                        <Label htmlFor="member4Sem" className="text-sm font-medium">Semester</Label>
+                        <Input
+                          id="member4Sem"
+                          placeholder="e.g. 3rd Sem"
+                          value={formData.member4Sem}
+                          onChange={(e) => handleChange("member4Sem", e.target.value)}
+                          className="glass border-white/20 h-10 text-sm"
+                        />
+                      </div>
+                      <div className="space-y-1.5">
+                        <Label htmlFor="member4Phone" className="text-sm font-medium">Phone</Label>
+                        <Input
+                          id="member4Phone"
+                          placeholder="Member 4 phone"
+                          value={formData.member4Phone}
+                          onChange={(e) => handleChange("member4Phone", e.target.value)}
+                          className="glass border-white/20 h-10 text-sm"
+                        />
+                      </div>
+                    </div>
+                  )}
+
+                  {/* Member 5 */}
+                  {Number(formData.teamSize) >= 5 && (
+                    <div className="grid grid-cols-1 md:grid-cols-3 gap-4">
+                      <div className="space-y-1.5">
+                        <Label htmlFor="member5Name" className="text-sm font-medium">Member 5 Name</Label>
+                        <Input
+                          id="member5Name"
+                          placeholder="Member 5 name (required if team size = 5)"
+                          value={formData.member5Name}
+                          onChange={(e) => handleChange("member5Name", e.target.value)}
+                          className="glass border-white/20 h-10 text-sm"
+                        />
+                      </div>
+                      <div className="space-y-1.5">
+                        <Label htmlFor="member5Sem" className="text-sm font-medium">Semester</Label>
+                        <Input
+                          id="member5Sem"
+                          placeholder="e.g. 3rd Sem"
+                          value={formData.member5Sem}
+                          onChange={(e) => handleChange("member5Sem", e.target.value)}
+                          className="glass border-white/20 h-10 text-sm"
+                        />
+                      </div>
+                      <div className="space-y-1.5">
+                        <Label htmlFor="member5Phone" className="text-sm font-medium">Phone</Label>
+                        <Input
+                          id="member5Phone"
+                          placeholder="Member 5 phone"
+                          value={formData.member5Phone}
+                          onChange={(e) => handleChange("member5Phone", e.target.value)}
+                          className="glass border-white/20 h-10 text-sm"
+                        />
+                      </div>
+                    </div>
+                  )}
                 </div>
               </div>
 

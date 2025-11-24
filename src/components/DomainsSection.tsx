@@ -3,8 +3,8 @@ import { Coins, BookOpen, Heart, Brain } from "lucide-react";
 
 const DomainsSection = () => {
   return (
-    <section id="domains" className="py-32 relative overflow-hidden">
-      <div className="absolute inset-0 bg-gradient-to-b from-background via-background/50 to-background" />
+    <section id="domains" className="py-28 md:py-32 relative overflow-hidden bg-gradient-to-b from-slate-950 via-slate-900 to-slate-950">
+      <div className="absolute inset-0 pointer-events-none bg-[radial-gradient(circle_at_top,_rgba(56,189,248,0.08),_transparent_55%),radial-gradient(circle_at_bottom,_rgba(52,211,153,0.06),_transparent_55%)]" />
       
       <div className="container mx-auto px-6 relative z-10">
         {/* Section Header */}

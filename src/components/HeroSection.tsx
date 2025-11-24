@@ -4,21 +4,21 @@ import { ArrowRight, Zap } from "lucide-react";
 
 const HeroSection = () => {
   return (
-    <section className="relative min-h-screen flex items-center justify-center overflow-hidden pt-20">
-      {/* Arc Reactor animated background */}
-      <div className="absolute inset-0 bg-gradient-hero overflow-hidden">
-        <div className="absolute top-20 left-10 w-64 h-64 bg-primary/30 rounded-full blur-3xl animate-pulse-glow glow-arc" />
-        <div className="absolute bottom-20 right-10 w-96 h-96 bg-iron-red/20 rounded-full blur-3xl animate-pulse-glow animation-delay-1000 glow-red" />
+    <section className="relative min-h-screen flex items-center justify-center overflow-hidden pt-20 bg-gradient-to-b from-slate-950 via-slate-900 to-slate-950">
+      {/* Arc Reactor animated background (subtle, premium) */}
+      <div className="pointer-events-none absolute inset-0 overflow-hidden">
+        <div className="absolute -top-32 -left-10 w-80 h-80 bg-primary/25 rounded-full blur-3xl opacity-70" />
+        <div className="absolute bottom-[-6rem] right-[-4rem] w-[26rem] h-[26rem] bg-emerald-500/15 rounded-full blur-3xl opacity-70" />
         
         {/* Arc Reactor core */}
-        <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[500px] h-[500px] md:w-[700px] md:h-[700px] opacity-40">
-          <div className="absolute inset-0 bg-gradient-arc rounded-full glow-arc" />
-          <div className="absolute inset-0 border-2 border-primary/40 rounded-full animate-reactor-spin" />
-          <div className="absolute inset-12 border-2 border-primary/30 rounded-full animate-reactor-spin animation-delay-500" style={{ animationDirection: 'reverse' }} />
-          <div className="absolute inset-24 border-2 border-primary/20 rounded-full animate-reactor-spin animation-delay-1000" />
+        <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[460px] h-[460px] md:w-[640px] md:h-[640px] opacity-30">
+          <div className="absolute inset-0 bg-gradient-arc rounded-full" />
+          <div className="absolute inset-0 border border-primary/40 rounded-full animate-reactor-spin" />
+          <div className="absolute inset-12 border border-primary/25 rounded-full animate-reactor-spin animation-delay-500" style={{ animationDirection: 'reverse' }} />
+          <div className="absolute inset-24 border border-primary/15 rounded-full animate-reactor-spin animation-delay-1000" />
           
           {/* Center glow */}
-          <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-20 h-20 bg-primary rounded-full glow-arc animate-pulse-glow" />
+          <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-16 h-16 bg-primary rounded-full shadow-[0_0_45px_rgba(56,189,248,0.7)]" />
         </div>
       </div>
 
@@ -49,7 +49,7 @@ const HeroSection = () => {
             Join the most advanced hackathon experience. Build the future across FinTech, EduTech, HealthTech, and AI domains.
           </p>
 
-          {/* CTA Buttons */}
+          {/* CTA Button */}
           <div className="flex flex-col sm:flex-row items-center justify-center gap-3 md:gap-4 animate-fade-in animation-delay-500 px-4">
             <Button 
               asChild 
@@ -61,16 +61,6 @@ const HeroSection = () => {
                 <ArrowRight className="ml-2 w-4 md:w-5 h-4 md:h-5 group-hover:translate-x-1 transition-transform" />
               </Link>
             </Button>
-            <Button 
-              asChild 
-              size="lg" 
-              variant="outline" 
-              className="w-full sm:w-auto font-display font-semibold text-base md:text-lg px-6 md:px-8 py-5 md:py-6 glass-strong border-primary/30 hover:bg-primary/10 magnetic-hover text-foreground"
-            >
-              <Link to="/login">
-                Login
-              </Link>
-            </Button>
           </div>
 
           {/* Stats */}
@@ -80,11 +70,11 @@ const HeroSection = () => {
               <div className="text-xs sm:text-sm text-foreground/60">Domains</div>
             </div>
             <div className="glass p-4 sm:p-6 rounded-xl md:rounded-2xl border border-iron-red/20">
-              <div className="text-2xl sm:text-3xl md:text-4xl font-display font-bold text-iron-red mb-1 md:mb-2 glow-red">48h</div>
+              <div className="text-2xl sm:text-3xl md:text-4xl font-display font-bold text-iron-red mb-1 md:mb-2 glow-red">24h</div>
               <div className="text-xs sm:text-sm text-foreground/60">Duration</div>
             </div>
             <div className="glass p-4 sm:p-6 rounded-xl md:rounded-2xl border border-iron-gold/20">
-              <div className="text-2xl sm:text-3xl md:text-4xl font-display font-bold text-iron-gold mb-1 md:mb-2 glow-gold">100+</div>
+              <div className="text-2xl sm:text-3xl md:text-4xl font-display font-bold text-iron-gold mb-1 md:mb-2 glow-gold">25+</div>
               <div className="text-xs sm:text-sm text-foreground/60">Teams</div>
             </div>
           </div>

@@ -17,7 +17,7 @@ const Navigation = () => {
               <span className="font-display font-bold text-xl relative z-10">H</span>
             </div>
             <span className="font-display font-bold text-base md:text-xl tracking-wider group-hover:text-primary transition-colors hidden sm:inline">
-              HACKATHON 2025
+              KLE CODE-FEST 2025
             </span>
           </Link>
 
@@ -26,19 +26,16 @@ const Navigation = () => {
             <Link to="/" className="text-foreground/80 hover:text-primary transition-colors font-medium">
               Home
             </Link>
-            <Link to="/#domains" className="text-foreground/80 hover:text-primary transition-colors font-medium">
+            <a href="/#domains" className="text-foreground/80 hover:text-primary transition-colors font-medium">
               Domains
-            </Link>
-            <Link to="/#features" className="text-foreground/80 hover:text-primary transition-colors font-medium">
+            </a>
+            <a href="/#features" className="text-foreground/80 hover:text-primary transition-colors font-medium">
               Features
-            </Link>
+            </a>
           </div>
 
           {/* CTA Buttons */}
           <div className="hidden md:flex items-center gap-4">
-            <Button asChild variant="ghost" className="font-medium hover:text-primary">
-              <Link to="/login">Login</Link>
-            </Button>
             <Button asChild className="bg-gradient-primary font-display font-semibold magnetic-hover glow-arc border-0">
               <Link to="/register">Register Now</Link>
             </Button>
@@ -63,24 +60,21 @@ const Navigation = () => {
             >
               Home
             </Link>
-            <Link 
-              to="/#domains" 
+            <a 
+              href="/#domains" 
               className="text-foreground/80 hover:text-primary transition-colors font-medium"
               onClick={() => setIsMenuOpen(false)}
             >
               Domains
-            </Link>
-            <Link 
-              to="/#features" 
+            </a>
+            <a 
+              href="/#features" 
               className="text-foreground/80 hover:text-primary transition-colors font-medium"
               onClick={() => setIsMenuOpen(false)}
             >
               Features
-            </Link>
+            </a>
             <div className="flex flex-col gap-2 mt-2">
-              <Button asChild variant="outline">
-                <Link to="/login">Login</Link>
-              </Button>
               <Button asChild className="bg-gradient-primary font-display font-semibold">
                 <Link to="/register">Register Now</Link>
               </Button>

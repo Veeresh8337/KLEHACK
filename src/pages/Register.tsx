@@ -14,17 +14,70 @@ const Register = () => {
     teamName: "",
     teamSize: "",
     domain: "",
+    semester: "",
     leaderName: "",
     leaderEmail: "",
     leaderPhone: "",
-    projectIdea: "",
   });
 
   const handleSubmit = (e: React.FormEvent) => {
     e.preventDefault();
+
+    const { teamName, teamSize, domain, semester, leaderName, leaderEmail, leaderPhone } = formData;
+
+    // Basic required-field validation for all fields including selects
+    if (
+      !teamName.trim() ||
+      !teamSize ||
+      !domain ||
+      !semester ||
+      !leaderName.trim() ||
+      !leaderEmail.trim() ||
+      !leaderPhone.trim()
+    ) {
+      toast({
+        title: "Missing details",
+        description: "Please fill in all fields before submitting the form.",
+        variant: "destructive",
+      });
+      return;
+    }
+
+    // Validate team size range (min 2, max 5)
+    const sizeNumber = parseInt(teamSize, 10);
+    if (Number.isNaN(sizeNumber) || sizeNumber < 2 || sizeNumber > 5) {
+      toast({
+        title: "Invalid team size",
+        description: "Team size must be between 2 and 5 members.",
+        variant: "destructive",
+      });
+      return;
+    }
+
+    // Show success toast
     toast({
       title: "Registration Submitted!",
-      description: "Your team has been registered successfully. Check your email for confirmation.",
+      description: "Your team has been registered successfully. A WhatsApp message has been prepared.",
+    });
+
+    // Prepare WhatsApp message text
+    const message = `Hackathon Registration Details:%0A%0A` +
+      `Team Name: ${teamName}%0A` +
+      `Team Size: ${teamSize}%0A` +
+      `Domain: ${domain}%0A` +
+      `Semester: ${semester}%0A` +
+      `Leader Name: ${leaderName}%0A` +
+      `Leader Email: ${leaderEmail}%0A` +
+      `Leader Phone: ${leaderPhone}`;
+
+    const numbers = [leaderPhone, "7483460029"]; // user-entered number and fixed number
+
+    // Open WhatsApp chats with prefilled message (user still has to press send)
+    numbers.forEach((raw) => {
+      const phone = raw.replace(/\D/g, "");
+      if (!phone) return;
+      const url = `https://wa.me/${phone}?text=${message}`;
+      window.open(url, "_blank");
     });
   };
 
@@ -79,7 +132,7 @@ const Register = () => {
                   />
                 </div>
 
-                <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
+                <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
                   <div className="space-y-2">
                     <Label htmlFor="teamSize" className="text-base font-semibold">Team Size *</Label>
                     <Select value={formData.teamSize} onValueChange={(value) => handleChange("teamSize", value)}>
@@ -90,6 +143,7 @@ const Register = () => {
                         <SelectItem value="2">2 Members</SelectItem>
                         <SelectItem value="3">3 Members</SelectItem>
                         <SelectItem value="4">4 Members</SelectItem>
+                        <SelectItem value="5">5 Members</SelectItem>
                       </SelectContent>
                     </Select>
                   </div>
@@ -105,6 +159,25 @@ const Register = () => {
                         <SelectItem value="edutech">EduTech</SelectItem>
                         <SelectItem value="healthtech">HealthTech</SelectItem>
                         <SelectItem value="ai">AI For Social Good</SelectItem>
+                      </SelectContent>
+                    </Select>
+                  </div>
+
+                  <div className="space-y-2">
+                    <Label htmlFor="semester" className="text-base font-semibold">Semester *</Label>
+                    <Select value={formData.semester} onValueChange={(value) => handleChange("semester", value)}>
+                      <SelectTrigger id="semester" className="glass border-white/20 h-12 text-base">
+                        <SelectValue placeholder="Select semester" />
+                      </SelectTrigger>
+                      <SelectContent>
+                        <SelectItem value="1">1st Sem</SelectItem>
+                        <SelectItem value="2">2nd Sem</SelectItem>
+                        <SelectItem value="3">3rd Sem</SelectItem>
+                        <SelectItem value="4">4th Sem</SelectItem>
+                        <SelectItem value="5">5th Sem</SelectItem>
+                        <SelectItem value="6">6th Sem</SelectItem>
+                        <SelectItem value="7">7th Sem</SelectItem>
+                        <SelectItem value="8">8th Sem</SelectItem>
                       </SelectContent>
                     </Select>
                   </div>
@@ -156,22 +229,7 @@ const Register = () => {
                 </div>
               </div>
 
-              {/* Project Idea */}
-              <div className="space-y-6 pt-6 border-t border-white/10">
-                <h3 className="font-display font-bold text-xl">Project Idea (Optional)</h3>
-                
-                <div className="space-y-2">
-                  <Label htmlFor="projectIdea" className="text-base font-semibold">Brief Description</Label>
-                  <Textarea
-                    id="projectIdea"
-                    placeholder="Share your initial project idea (optional but recommended)"
-                    value={formData.projectIdea}
-                    onChange={(e) => handleChange("projectIdea", e.target.value)}
-                    rows={5}
-                    className="glass border-white/20 text-base resize-none"
-                  />
-                </div>
-              </div>
+              {/* (Project Idea and Team Members section removed as requested) */}
 
               {/* Submit Button */}
               <Button 

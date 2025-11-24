@@ -10,12 +10,13 @@ const Navigation = () => {
     <nav className="fixed top-0 left-0 right-0 z-50 glass border-b border-white/10">
       <div className="container mx-auto px-6 py-4">
         <div className="flex items-center justify-between">
-          {/* Logo */}
+          {/* Arc Reactor Logo */}
           <Link to="/" className="flex items-center gap-2 group">
-            <div className="w-10 h-10 rounded-lg bg-gradient-primary flex items-center justify-center glow-cyan">
-              <span className="font-display font-bold text-xl">H</span>
+            <div className="relative w-10 h-10 rounded-lg bg-gradient-primary flex items-center justify-center glow-arc arc-reactor">
+              <div className="absolute inset-0 border border-primary/50 rounded-lg animate-pulse-glow" />
+              <span className="font-display font-bold text-xl relative z-10">H</span>
             </div>
-            <span className="font-display font-bold text-xl tracking-wider group-hover:text-primary transition-colors">
+            <span className="font-display font-bold text-base md:text-xl tracking-wider group-hover:text-primary transition-colors hidden sm:inline">
               HACKATHON 2025
             </span>
           </Link>
@@ -38,7 +39,7 @@ const Navigation = () => {
             <Button asChild variant="ghost" className="font-medium hover:text-primary">
               <Link to="/login">Login</Link>
             </Button>
-            <Button asChild className="bg-gradient-primary font-display font-semibold magnetic-hover glow-cyan border-0">
+            <Button asChild className="bg-gradient-primary font-display font-semibold magnetic-hover glow-arc border-0">
               <Link to="/register">Register Now</Link>
             </Button>
           </div>

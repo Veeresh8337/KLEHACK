@@ -8,53 +8,54 @@ All colors MUST be HSL.
 
 @layer base {
   :root {
-    /* Avengers + Apple Premium Theme */
-    --background: 215 100% 6%;
+    /* Iron Man Arc Reactor Theme */
+    --background: 220 15% 8%;
     --foreground: 210 40% 98%;
 
-    --card: 217 28% 12%;
+    --card: 220 15% 12%;
     --card-foreground: 210 40% 98%;
 
-    --popover: 217 28% 10%;
+    --popover: 220 15% 10%;
     --popover-foreground: 210 40% 98%;
 
-    --primary: 194 100% 50%;
-    --primary-foreground: 215 100% 6%;
+    --primary: 194 100% 60%;
+    --primary-foreground: 220 15% 8%;
 
-    --secondary: 262 52% 47%;
+    --secondary: 0 85% 55%;
     --secondary-foreground: 210 40% 98%;
 
-    --muted: 217 28% 18%;
+    --muted: 220 15% 18%;
     --muted-foreground: 215 20.2% 65.1%;
 
-    --accent: 45 100% 50%;
-    --accent-foreground: 215 100% 6%;
+    --accent: 43 96% 56%;
+    --accent-foreground: 220 15% 8%;
 
     --destructive: 0 84% 60%;
     --destructive-foreground: 210 40% 98%;
 
-    --border: 217 28% 20%;
-    --input: 217 28% 15%;
-    --ring: 194 100% 50%;
+    --border: 220 15% 20%;
+    --input: 220 15% 15%;
+    --ring: 194 100% 60%;
 
-    --radius: 0.75rem;
+    --radius: 1rem;
 
-    /* Premium gradients */
-    --gradient-primary: linear-gradient(135deg, hsl(194 100% 50%), hsl(262 52% 47%));
-    --gradient-secondary: linear-gradient(135deg, hsl(262 52% 47%), hsl(45 100% 50%));
-    --gradient-hero: linear-gradient(180deg, hsl(215 100% 6%), hsl(217 28% 10%));
-    --gradient-glass: linear-gradient(135deg, rgba(255, 255, 255, 0.1), rgba(255, 255, 255, 0.05));
+    /* Iron Man Gradients */
+    --gradient-primary: linear-gradient(135deg, hsl(194 100% 60%), hsl(43 96% 56%));
+    --gradient-ironman: linear-gradient(135deg, hsl(0 85% 55%), hsl(43 96% 56%));
+    --gradient-arc: radial-gradient(circle, hsl(194 100% 60% / 0.4), hsl(194 100% 40% / 0.1));
+    --gradient-hero: linear-gradient(180deg, hsl(220 15% 8%), hsl(220 15% 12%));
+    --gradient-glass: linear-gradient(135deg, rgba(0, 217, 255, 0.1), rgba(255, 215, 0, 0.05));
     
-    /* Neon colors */
-    --neon-cyan: 194 100% 50%;
-    --neon-purple: 262 52% 47%;
-    --neon-gold: 45 100% 50%;
-    --neon-red: 0 100% 50%;
+    /* Arc Reactor colors */
+    --arc-blue: 194 100% 60%;
+    --arc-glow: 194 100% 70%;
+    --iron-red: 0 85% 55%;
+    --iron-gold: 43 96% 56%;
     
-    /* Glow effects */
-    --glow-cyan: 0 0 20px hsl(194 100% 50% / 0.5), 0 0 40px hsl(194 100% 50% / 0.3);
-    --glow-purple: 0 0 20px hsl(262 52% 47% / 0.5), 0 0 40px hsl(262 52% 47% / 0.3);
-    --glow-gold: 0 0 20px hsl(45 100% 50% / 0.5), 0 0 40px hsl(45 100% 50% / 0.3);
+    /* Arc Reactor Glow effects */
+    --glow-arc: 0 0 30px hsl(194 100% 60% / 0.6), 0 0 60px hsl(194 100% 60% / 0.4), 0 0 90px hsl(194 100% 60% / 0.2);
+    --glow-red: 0 0 20px hsl(0 85% 55% / 0.5), 0 0 40px hsl(0 85% 55% / 0.3);
+    --glow-gold: 0 0 20px hsl(43 96% 56% / 0.5), 0 0 40px hsl(43 96% 56% / 0.3);
     
     /* Premium shadows */
     --shadow-premium: 0 20px 60px -15px rgba(0, 217, 255, 0.2);
@@ -83,24 +84,44 @@ All colors MUST be HSL.
 @layer utilities {
   /* Glassmorphism */
   .glass {
-    @apply bg-white/5 backdrop-blur-xl border border-white/10;
+    @apply bg-white/5 backdrop-blur-xl border border-primary/10;
   }
   
   .glass-strong {
-    @apply bg-white/10 backdrop-blur-2xl border border-white/20;
+    @apply bg-gradient-to-br from-white/10 to-primary/5 backdrop-blur-2xl border border-primary/20;
   }
   
-  /* Neon glow effects */
-  .glow-cyan {
-    box-shadow: var(--glow-cyan);
+  /* Arc Reactor glow effects */
+  .glow-arc {
+    box-shadow: var(--glow-arc);
   }
   
-  .glow-purple {
-    box-shadow: var(--glow-purple);
+  .glow-red {
+    box-shadow: var(--glow-red);
   }
   
   .glow-gold {
     box-shadow: var(--glow-gold);
+  }
+  
+  /* Arc Reactor pulse animation */
+  .arc-reactor {
+    position: relative;
+    background: radial-gradient(circle, hsl(var(--arc-blue)), transparent);
+    box-shadow: var(--glow-arc);
+  }
+  
+  .arc-reactor::before {
+    content: '';
+    position: absolute;
+    inset: -2px;
+    border-radius: inherit;
+    padding: 2px;
+    background: linear-gradient(135deg, hsl(var(--arc-blue)), hsl(var(--arc-glow)));
+    -webkit-mask: linear-gradient(#fff 0 0) content-box, linear-gradient(#fff 0 0);
+    -webkit-mask-composite: xor;
+    mask-composite: exclude;
+    animation: arc-pulse 2s ease-in-out infinite;
   }
   
   /* Premium animations */
@@ -124,6 +145,16 @@ All colors MUST be HSL.
     50% { opacity: 1; transform: scale(1.05); }
   }
   
+  @keyframes arc-pulse {
+    0%, 100% { opacity: 1; }
+    50% { opacity: 0.6; }
+  }
+  
+  @keyframes reactor-spin {
+    0% { transform: rotate(0deg); }
+    100% { transform: rotate(360deg); }
+  }
+  
   .animate-float {
     animation: float 6s ease-in-out infinite;
   }
@@ -133,13 +164,17 @@ All colors MUST be HSL.
   }
   
   .animate-shimmer {
-    background: linear-gradient(90deg, transparent, rgba(255,255,255,0.1), transparent);
+    background: linear-gradient(90deg, transparent, rgba(0,217,255,0.2), transparent);
     background-size: 1000px 100%;
     animation: shimmer 3s infinite;
   }
   
   .animate-hologram {
     animation: hologram 3s ease-in-out infinite;
+  }
+  
+  .animate-reactor-spin {
+    animation: reactor-spin 20s linear infinite;
   }
   
   /* Magnetic hover effect */

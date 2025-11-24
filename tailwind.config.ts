@@ -51,24 +51,27 @@ export default {
           DEFAULT: "hsl(var(--card))",
           foreground: "hsl(var(--card-foreground))",
         },
-        neon: {
-          cyan: "hsl(var(--neon-cyan))",
-          purple: "hsl(var(--neon-purple))",
-          gold: "hsl(var(--neon-gold))",
-          red: "hsl(var(--neon-red))",
+        arc: {
+          blue: "hsl(var(--arc-blue))",
+          glow: "hsl(var(--arc-glow))",
+        },
+        iron: {
+          red: "hsl(var(--iron-red))",
+          gold: "hsl(var(--iron-gold))",
         },
       },
       backgroundImage: {
         'gradient-primary': 'var(--gradient-primary)',
-        'gradient-secondary': 'var(--gradient-secondary)',
+        'gradient-ironman': 'var(--gradient-ironman)',
+        'gradient-arc': 'var(--gradient-arc)',
         'gradient-hero': 'var(--gradient-hero)',
         'gradient-glass': 'var(--gradient-glass)',
       },
       boxShadow: {
         'premium': 'var(--shadow-premium)',
         'elevated': 'var(--shadow-elevated)',
-        'glow-cyan': 'var(--glow-cyan)',
-        'glow-purple': 'var(--glow-purple)',
+        'glow-arc': 'var(--glow-arc)',
+        'glow-red': 'var(--glow-red)',
         'glow-gold': 'var(--glow-gold)',
       },
       borderRadius: {

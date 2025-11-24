@@ -25,10 +25,19 @@ const HeroSection = () => {
       {/* Hero Content */}
       <div className="container mx-auto px-4 md:px-6 relative z-10">
         <div className="max-w-5xl mx-auto text-center">
-          {/* Badge */}
-          <div className="inline-flex items-center gap-2 px-4 py-2 rounded-full glass-strong border border-primary/30 mb-6 md:mb-8 animate-fade-in glow-arc">
-            <Zap className="w-4 h-4 text-primary" />
-            <span className="text-xs md:text-sm font-semibold text-primary">Limited Spots Available</span>
+          {/* Highlighted Event + College Badge */}
+          <div className="inline-flex items-center gap-3 px-5 py-2.5 rounded-full mb-6 md:mb-8 animate-fade-in bg-gradient-to-r from-primary/20 via-primary/40 to-emerald-400/30 border border-primary/60 shadow-[0_0_35px_rgba(56,189,248,0.55)] backdrop-blur-xl">
+            <div className="flex items-center justify-center w-8 h-8 rounded-full bg-primary/80 text-background shadow-[0_0_18px_rgba(56,189,248,0.9)]">
+              <Zap className="w-4 h-4" />
+            </div>
+            <div className="flex flex-col items-start text-left leading-tight">
+              <span className="text-[10px] sm:text-xs font-medium text-foreground/80 tracking-[0.28em] uppercase">
+                KLE CODE-FEST 2025
+              </span>
+              <span className="text-xs sm:text-sm md:text-base font-semibold bg-gradient-to-r from-emerald-300 via-white to-cyan-300 bg-clip-text text-transparent">
+                Hosted by KLE SOCIETY'S COLLEGE OF BCA GOKAK
+              </span>
+            </div>
           </div>
 
           {/* Main Title */}
@@ -42,11 +51,11 @@ const HeroSection = () => {
 
           {/* Subtitle */}
           <p className="text-lg sm:text-xl md:text-2xl lg:text-3xl text-foreground/80 mb-3 md:mb-4 animate-fade-in animation-delay-200 font-light tracking-wide px-4">
-            Innovate. Collaborate. Dominate.
+            Join the most advanced hackathon experience.
           </p>
 
           <p className="text-sm sm:text-base md:text-lg text-foreground/60 mb-8 md:mb-12 max-w-2xl mx-auto animate-fade-in animation-delay-300 px-4">
-            Join the most advanced hackathon experience. Build the future across FinTech, EduTech, HealthTech, and AI domains.
+            Build the future across FinTech, EduTech, HealthTech, and AI domains.
           </p>
 
           {/* CTA Button */}

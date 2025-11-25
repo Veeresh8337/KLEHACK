@@ -14,10 +14,10 @@ const Navigation = () => {
           <Link to="/" className="flex items-center gap-2 group">
             <div className="relative w-10 h-10 rounded-lg bg-gradient-primary flex items-center justify-center glow-arc arc-reactor">
               <div className="absolute inset-0 border border-primary/50 rounded-lg animate-pulse-glow" />
-              <span className="font-display font-bold text-xl relative z-10">H</span>
+              <span className="font-display font-bold text-xl relative z-10">C</span>
             </div>
             <span className="font-display font-bold text-base md:text-xl tracking-wider group-hover:text-primary transition-colors hidden sm:inline">
-              KLE CODE-FEST 2025
+               CODE-FEST 
             </span>
           </Link>
 
@@ -28,6 +28,9 @@ const Navigation = () => {
             </Link>
             <a href="/#domains" className="text-foreground/80 hover:text-primary transition-colors font-medium">
               Domains
+            </a>
+            <a href="/#timeline" className="text-foreground/80 hover:text-primary transition-colors font-medium">
+              Timeline
             </a>
             <a href="/#features" className="text-foreground/80 hover:text-primary transition-colors font-medium">
               Features
@@ -66,6 +69,13 @@ const Navigation = () => {
               onClick={() => setIsMenuOpen(false)}
             >
               Domains
+            </a>
+            <a 
+              href="/#timeline" 
+              className="text-foreground/80 hover:text-primary transition-colors font-medium"
+              onClick={() => setIsMenuOpen(false)}
+            >
+              Timeline
             </a>
             <a 
               href="/#features" 

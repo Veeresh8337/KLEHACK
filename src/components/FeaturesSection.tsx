@@ -9,11 +9,11 @@ const features = [
   {
     icon: Users,
     title: "Dedicated Mentors",
-    description: "Mentored by Veeresh, Sujal, Praveen and Darshna throughout the 24-hour sprint.",
+    description: "Mentored by Veeresh, Sujal, Praveen and Darshna throughout the 2-day sprint.",
   },
   {
     icon: Sparkles,
-    title: "24 Hours of Innovation",
+    title: "2 Days of Innovation",
     description: "A full-day coding marathon to turn your ideas into reality.",
   },
   {
@@ -85,8 +85,8 @@ const FeaturesSection = () => {
               <div className="text-foreground/60 font-medium">Mentors</div>
             </div>
             <div>
-              <div className="font-display font-black text-5xl text-destructive mb-2">24</div>
-              <div className="text-foreground/60 font-medium">Hours of Innovation</div>
+              <div className="font-display font-black text-5xl text-destructive mb-2">2</div>
+              <div className="text-foreground/60 font-medium">Days of Innovation</div>
             </div>
           </div>
         </div>

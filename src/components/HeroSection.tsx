@@ -42,11 +42,11 @@ const HeroSection = () => {
 
           {/* Main Title */}
           <h1 className="font-display font-black text-4xl sm:text-6xl md:text-7xl lg:text-9xl mb-4 md:mb-6 animate-fade-in tracking-tight leading-tight">
-            <span className="bg-gradient-primary bg-clip-text text-transparent glow-arc">
-              HACKATHON
+            <span className="text-foreground">
+              AI ADVANCE 
             </span>
             <br />
-            <span className="text-foreground drop-shadow-[0_0_30px_rgba(0,217,255,0.3)]">2025</span>
+            <span className="text-foreground drop-shadow-[0_0_30px_rgba(0,217,255,0.3)]">HACKTHON</span>
           </h1>
 
           {/* Subtitle */}
@@ -79,7 +79,7 @@ const HeroSection = () => {
               <div className="text-xs sm:text-sm text-foreground/60">Domains</div>
             </div>
             <div className="glass p-4 sm:p-6 rounded-xl md:rounded-2xl border border-iron-red/20">
-              <div className="text-2xl sm:text-3xl md:text-4xl font-display font-bold text-iron-red mb-1 md:mb-2 glow-red">24h</div>
+              <div className="text-2xl sm:text-3xl md:text-4xl font-display font-bold text-iron-red mb-1 md:mb-2 glow-red">2 Days</div>
               <div className="text-xs sm:text-sm text-foreground/60">Duration</div>
             </div>
             <div className="glass p-4 sm:p-6 rounded-xl md:rounded-2xl border border-iron-gold/20">

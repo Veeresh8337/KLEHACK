@@ -43,7 +43,7 @@ const HeroSection = () => {
           {/* Main Title */}
           <h1 className="font-display font-black text-4xl sm:text-6xl md:text-7xl lg:text-9xl mb-4 md:mb-6 animate-fade-in tracking-tight leading-tight">
             <span className="text-foreground">
-              AI ADVANCE 
+               ADVANCED AI
             </span>
             <br />
             <span className="text-foreground drop-shadow-[0_0_30px_rgba(0,217,255,0.3)]">HACKTHON</span>

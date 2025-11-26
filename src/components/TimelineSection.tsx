@@ -38,7 +38,7 @@ const TimelineSection = () => {
             </div>
             <div className="text-left">
               <h3 className="font-display font-semibold text-lg mb-1">Event Start</h3>
-              <p className="text-sm text-foreground/70">Hackathon kicks off from 1st November with Round 1 activities.</p>
+              <p className="text-sm text-foreground/70">Hackathon kicks off from 1st December with Round 1 activities.</p>
             </div>
           </div>
 
